@@ -1,17 +1,18 @@
 package VM;
 
+import java.io.*;
 import java.util.ArrayList;
 
 public class Assembler {
 	
 	ArrayList<Integer> befehlsListe;
 	
-	/**Diese Funktion liefert den Befehl am gewï¿½nschten Index der Befehlsliste*/
+	/**Diese Funktion liefert den Befehl am gewünschten Index der Befehlsliste*/
 	public int getOrder(int index){
 		return befehlsListe.get(index);
 	}
 	
-	/**Dieser Konstruktor erstellt eine Befehlsliste aus einem Textdokument mit dem Filename des ï¿½bergebenen Strings
+	/**Dieser Konstruktor erstellt eine Befehlsliste aus einem Textdokument mit dem Filename des übergebenen Strings
 	 * Auf diese Befehlsliste kann dann mit int getOrder(int index) zugegriffen werden.
 	 * Falls Ausnahmen Auftreten, wird eine AssemblerException geworfen.*/
 	public Assembler(String Filename) throws AssemblerException{
