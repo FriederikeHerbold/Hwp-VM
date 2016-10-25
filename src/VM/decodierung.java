@@ -1,6 +1,7 @@
 package VM;
 
 public class decodierung {
+	// muss noch an der richtigen stelle eingefügt werden
 	int eingang = 2;
 	int befehl = eingang & 0b111;
 	int wert;
