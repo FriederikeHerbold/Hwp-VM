@@ -11,7 +11,7 @@ public class Assembler {
 	}
 	
 	public Assembler(String Filename){
-		Object File=new File(Filename);
+	
 	}
 
 }
