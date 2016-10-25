@@ -1,15 +1,20 @@
 package VM;
 
-import static gdi.MakeItSimple.*;
 
-public static void main(String[]args){
+
+import java.util.Scanner;
+
+
 
 public class VM extends Thread {
 
 	Assembler myAssembler;
+	
 
 	public static void main(String[] args) throws AssemblerException {
-		VM myVM = new VM(readLine());
+		
+		Scanner sc=new Scanner(System.in);
+		VM myVM = new VM(sc.nextLine());
 		myVM.start();
 	}
 
