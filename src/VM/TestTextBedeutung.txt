@@ -1,0 +1,3 @@
+0		Nix
+321		Lade 20 aus R0
+161		Lade 10 auf R0
