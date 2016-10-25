@@ -21,7 +21,9 @@ public class Assembler {
 			String befehl=null;
 			
 			while((befehl=file.readLine())!=null){
-				befehlsListe.add(Integer.parseInt(befehl));
+				if(befehl.length()!=0){
+					befehlsListe.add(Integer.parseInt(befehl));
+				}
 			}
 					
 		}catch(Exception e){

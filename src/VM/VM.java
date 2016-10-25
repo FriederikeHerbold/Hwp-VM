@@ -1,7 +1,7 @@
 package VM;
 
 import static gdi.MakeItSimple.*;
-// test
+
 public class VM extends Thread{
 	
 	Assembler myAssembler;
