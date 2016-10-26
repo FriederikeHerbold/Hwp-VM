@@ -24,8 +24,8 @@ public class VM implements Runnable {
 			cmd= (opCode) & 0b1111;
 			indexRx=(opCode>>4)& 0b1111;
 			indexRy=(opCode >>8)& 0b1111;
-			to_Mem=(opCode>>12) & 1;
-			from_Mem=(opCode>>13) & 1;
+			
+			
 			
 			makeMenu(cmd);
 				
@@ -45,9 +45,9 @@ public class VM implements Runnable {
 			prgCNT++;
 			break;
 		case(Command.MOV):
-			if(to_Mem==1){
+			if(getToMem(opCode)==1){
 				reg[indexRx]=reg[indexRy];
-			}else if(from_Mem==1){
+			}else if(getFromMem(opCode)==1){
 				reg[indexRy]=reg[indexRx];
 			}
 			prgCNT++;
@@ -111,4 +111,10 @@ public class VM implements Runnable {
 		return (opCode>>4) & 0b1111;
 	}
 	
+	private int getToMem(int opCode){
+		return (opCode>>13) & 1;
+	}
+	private int getFromMem(int opCode){
+		return (opCode>>12) & 1;
+	}
 }
