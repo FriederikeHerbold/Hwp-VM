@@ -1,0 +1,69 @@
+Dieser Test testet die Befehle PUSH und POP, benutzt aber auch LOAD
+
+0001		Lade 0 auf R0
+0007		Pushe R0 auf den Stack
+0011		Lade 1 auf R0
+0007		Pushe R0 auf den Stack
+0021		Lade 2 auf R0
+0007		Pushe R0 auf den Stack
+0031		Lade 3 auf R0
+0007		Pushe R0 auf den Stack
+0041		Lade 4 auf R0
+0007		Pushe R0 auf den Stack
+0051		Lade 5 auf R0
+0007		Pushe R0 auf den Stack
+0061		Lade 6 auf R0
+0007		Pushe R0 auf den Stack
+0071		Lade 7 auf R0
+0007		Pushe R0 auf den Stack
+0081		Lade 8 auf R0
+0007		Pushe R0 auf den Stack
+0091		Lade 9 auf R0
+0007		Pushe R0 auf den Stack
+00A1		Lade 10 auf R0
+0007		Pushe R0 auf den Stack
+00B1		Lade 11 auf R0
+0007		Pushe R0 auf den Stack
+00C1		Lade 12 auf R0
+0007		Pushe R0 auf den Stack
+00D1		Lade 13 auf R0
+0007		Pushe R0 auf den Stack
+00E1		Lade 14 auf R0
+0007		Pushe R0 auf den Stack
+00F1		Lade 15 auf R0
+0007		Pushe R0 auf den Stack
+
+0008		Nehme das oberste Element des Stacks und lege es auf R0
+0018		Nehme das oberste Element des Stacks und lege es auf R1
+0028		Nehme das oberste Element des Stacks und lege es auf R2
+0038		Nehme das oberste Element des Stacks und lege es auf R3
+0048		Nehme das oberste Element des Stacks und lege es auf R4
+0058		Nehme das oberste Element des Stacks und lege es auf R5
+0068		Nehme das oberste Element des Stacks und lege es auf R6
+0078		Nehme das oberste Element des Stacks und lege es auf R7
+0088		Nehme das oberste Element des Stacks und lege es auf R8
+0098		Nehme das oberste Element des Stacks und lege es auf R9
+00A8		Nehme das oberste Element des Stacks und lege es auf R10
+00B8		Nehme das oberste Element des Stacks und lege es auf R11
+00C8		Nehme das oberste Element des Stacks und lege es auf R12
+00D8		Nehme das oberste Element des Stacks und lege es auf R13
+00E8		Nehme das oberste Element des Stacks und lege es auf R14
+00F8		Nehme das oberste Element des Stacks und lege es auf R15
+
+Erwünschtes Ergebnis:
+R0:0
+R1:1
+R2:2
+R3:3
+R4:4
+R5:5
+R6:6
+R7:7
+R8:8
+R9:9
+R10:10
+R11:11
+R12:12
+R13:13
+R14:14
+R15:15
