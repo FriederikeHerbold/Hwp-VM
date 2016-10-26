@@ -1,0 +1,18 @@
+Der Fokus dieses Tests liegt auf den Befehlen MUL und DIV,
+benutzt aber auch LOAD und MOV
+
+0021		Lade 2 auf R0
+0012		Bewege R0 auf R1
+0031		Lade 3 auf R0
+0022		Bewege R0 auf R2
+
+0125		Multipliziere R1 und R2 und schreibe das Ergebnis auf R2
+0051		Lade 5 auf R0
+0032		Bewege R0 auf R3
+0136		Teile R3 durch R1 und schreibe das Ergebnis auf R3
+
+Erwünschtes Ergebnis:
+R0=?
+R1=2
+R2=6
+R3=2
