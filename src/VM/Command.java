@@ -2,20 +2,20 @@ package VM;
 
 public interface Command {
 
-	public static final int NOP=0;
-	public static final int LOAD=1;
-	public static final int MOV=2;
-	public static final int ADD=3;
-	public static final int SUB=4;
-	public static final int MUL=5;
-	public static final int DIV=6;
-	public static final int PUSH=7;
-	public static final int POP=8;
-	public static final int JMP=9;
-	public static final int JIZ=10;
-	public static final int JIH=11;
-	public static final int JSR=12;
-	public static final int RTS=13;
+	public static final int NOP=0000;
+	public static final int LOAD=0001;
+	public static final int MOV=0010;
+	public static final int ADD=0011;
+	public static final int SUB=0100;
+	public static final int MUL=0101;
+	public static final int DIV=0110;
+	public static final int PUSH=0111;
+	public static final int POP=1000;
+	public static final int JMP=1001;
+	public static final int JIZ=1010;
+	public static final int JIH=1011;
+	public static final int JSR=1100;
+	public static final int RTS=1101;
 	
 	
 	
