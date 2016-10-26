@@ -1,4 +1,0 @@
-0000		Nix
-0141		Lade 20 aus R0
-00A1		Lade 10 auf R0
-

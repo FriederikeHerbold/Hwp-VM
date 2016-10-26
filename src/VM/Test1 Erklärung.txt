@@ -1,0 +1,18 @@
+Dieser Test testet die Methoden Nob, Mov, Add und Sub
+
+0000		Nix
+0141		Lade 20 aus R0
+0012		Bewege Inhalt von R0 auf R1
+00A1		Lade 10 auf R0
+0022		Bewege Inhalt von R0 auf R2
+
+0213		Addiere R1 und R2 und schreibe das Ergebnis auf R1
+0001		Lade 0 auf R0
+2102		Bewege R1 auf Speicherstelle von R0
+0012		Bewege R0 auf R1
+2214		Subtrahiere Inhalt von R2 von Inhalt der Adresse von R1 und schreibe das Ergebnis auf Adresse von R1
+
+Erwünschter Stand:
+R0=?
+R1=0	(R0)=20
+R2=10
