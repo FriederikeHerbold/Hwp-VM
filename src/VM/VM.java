@@ -67,7 +67,7 @@ public class VM implements Runnable {
 			reg[indexRx]/=reg[indexRy];
 			prgCNT++;
 		case(Command.PUSH):
-			stack.push(reg[indexRx]);
+			stack.push(indexRx);
 			prgCNT++;
 			break;
 		case(Command.POP):
