@@ -1,0 +1,14 @@
+0001		Lade 0 auf R0
+0012		Bewege R0 auf R1
+0011		Lade 1 auf R0
+0022		Bewege R0 auf R2
+
+0011		Lade 1 auf R0
+2012		Bewege R0 auf Speicherstelle von R1
+0011		Lade 1 auf R0
+2022		Bewege R0 auf Speicherstelle von R2
+
+0000		Mache nichts(Befehl Nr. 8)
+0001		Lade 0 auf R0
+1103		
+1203
