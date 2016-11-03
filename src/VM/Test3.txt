@@ -5,6 +5,9 @@ PUSH 0
 
 POP 1
 POP (1)
+
+RTS
+
 /Erwünschtes Ergebnis:
 /
 /R1=1001 (R1)=1

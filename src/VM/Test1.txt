@@ -27,6 +27,8 @@ DIV 6,0
 
 LOAD 0
 
+RTS
+
 /Erwünschtes Ergebnis:
 /
 /R0=0
