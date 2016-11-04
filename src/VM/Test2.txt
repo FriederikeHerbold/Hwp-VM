@@ -17,6 +17,8 @@ LOAD 1
 ADD 0,4
 MOV (3),0
 
+RTS
+
 /Erwünschtes Ergebnis:
 /
 /R0=3
