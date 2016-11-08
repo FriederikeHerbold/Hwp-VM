@@ -28,27 +28,35 @@ public class decodierung {
 			count++;
 			break;
 		case Command.MOV:
-			if (getto_mem(opcode) == 1) {
+			if (getto_mem(opcode) == 1 && getfrom_mem(opcode) == 1) {
+				memory[memory[getrx(opcode)]] = memory[memory[getry(opcode)]];
+			} else if (getto_mem(opcode) == 1) {
 				memory[memory[getrx(opcode)]] = memory[getry(opcode)];
 			} else if (getfrom_mem(opcode) == 1) {
 				memory[getrx(opcode)] = memory[memory[getry(opcode)]];
+			} else {
+				memory[getrx(opcode)] = memory[getry(opcode)];
 			}
 			count++;
 			break;
 		case Command.ADD:
-			memory[getrx(opcode)] = memory[getrx(opcode)] + memory[getry(opcode)];
+			memory[getrx(opcode)] = (memory[getrx(opcode)] << 20) + (memory[getry(opcode)]);
+			memory[getrx(opcode)] = (memory[getrx(opcode)]) >> 20;
 			count++;
 			break;
 		case Command.SUB:
-			memory[getrx(opcode)] = memory[getrx(opcode)] - memory[getry(opcode)];
+			memory[getrx(opcode)] = (memory[getrx(opcode)] << 20) - (memory[getry(opcode)]);
+			memory[getrx(opcode)] = (memory[getrx(opcode)]) >> 20;
 			count++;
 			break;
 		case Command.MUL:
-			memory[getrx(opcode)] = memory[getrx(opcode)] * memory[getry(opcode)];
+			memory[getrx(opcode)] = (memory[getrx(opcode)] << 20) * (memory[getry(opcode)]);
+			memory[getrx(opcode)] = (memory[getrx(opcode)]) >> 20;
 			count++;
 			break;
 		case Command.DIV:
-			memory[getrx(opcode)] = memory[getrx(opcode)] / memory[getry(opcode)];
+			memory[getrx(opcode)] = (memory[getrx(opcode)] << 20) / (memory[getry(opcode)]);
+			memory[getrx(opcode)] = (memory[getrx(opcode)]) >> 20;
 			count++;
 			break;
 		case Command.PUSH:
