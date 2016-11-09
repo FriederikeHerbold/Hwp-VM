@@ -21,7 +21,7 @@ var row=table.insertRow(len);
 var cell1 = row.insertCell(0).innerHTML("'obj[i].workload'");
 var cell2 = row.insertCell(1).innerHTML("'obj[i].ip'");
 var cell3 = row.insertCell(2).innerHTML("'obj[i].id'");
-var cell4 = row.insertCell(3).innerHTML("<button onclick="startFunction()">Start</button> <button onclick="stopFunction()">Stop</button>
+var cell4 = row.insertCell(3).innerHTML("<label class="switch"><input type="checkbox"> <div class="slider round"></div></label>");
 
 
 }
