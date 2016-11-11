@@ -10,7 +10,7 @@ top: 0px;
 left: 0px;
 right: 0px;
 bottom: 0px;
-background: yellow;
+background: #E2A9F3;
 }
 #b{
   position: absolute;
@@ -22,10 +22,10 @@ background: yellow;
   right: 0px;
   bottom: 0px;
   overflow: hidden;
-  background: green;
+  background: #F8E0E6;
 }
 #status{
-  background: blue;
+  background: #F6CED8;
 }
 section{
   position: absolute;
@@ -54,6 +54,11 @@ section:target{
   width: 60px;
   height: 34px;
 }
+
+
+.switch input {display:none;}
+
+
 .slider {
   position: absolute;
   cursor: pointer;
@@ -61,7 +66,7 @@ section:target{
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #ccc;
+  background-color: #F5A9A9;
   -webkit-transition: .4s;
   transition: .4s;
 }
@@ -79,11 +84,11 @@ section:target{
 }
 
 input:checked + .slider {
-  background-color: #2196F3;
+  background-color: #FF0000;
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px #2196F3;
+  box-shadow: 0 0 1px #F5A9A9;
 }
 
 input:checked + .slider:before {
@@ -92,7 +97,7 @@ input:checked + .slider:before {
   transform: translateX(26px);
 }
 
-/* Rounded sliders */
+
 .slider.round {
   border-radius: 34px;
 }
