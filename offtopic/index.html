@@ -1,93 +1,121 @@
 <DOCTYPE html>
-<html>
-   <head>
-     <title>Vorlesung Webanwendungen</title>
-     <link rel="stylesheet" href="index.css"/>
-     <link rel="stylesheet" media="print" href="print.css"/>
-     <meta charset="UTF-8">
-     <meta name="author" content="Friederike">
-     <meta name="deacription" content="Versuchsseite"
-    </head>
+
+  <html>
+
+
+
+  <head>
+
+    <title>Vorlesung Webanwendungen</title>
+
+    <link rel="stylesheet" href="index.css" />
+
+    <link rel="stylesheet" media="print" href="print.css" />
+
+    <meta charset="UTF-8">
+
+    <meta name="author" content="Friederike">
+
+    <meta name="deacription" content="Versuchsseite" </head>
+
+
+
     <body>
+
       <div id="m">
+
         <menue>
+
           <li><a href="http://www.google.de/">link zu google<br></a></li>
+
           <li><a href="#status">status</a></li>
+
           <li><a href="#tasks">tasks</a></li>
+
           <article>nur n kleiner text</article>
+
         </menue>
+
       </div>
+
       <div id="b">
-      <main>
-        <menue contenteditable="">
-          <section id="status">
-            <article>
-              <p>Status<br>Kleine Liste</p>
-            </article>
-           <table>
-              <tbody>
-                 <tr>
-                  <li tabindex="1" accaskey="1">Element1</li>
-                 </tr>
-                 <tr>
-                  <li tabindex="1" accaskey="2">Element2</li>
-                 </tr>
-                 <tr>
-                  <li tabindex="1" accaskey="2">Element3</li>
-                 </tr>
-                 <tr>
-                  <li tabindex="1" accaskey="2">Element4</li>
-                 </tr>
-               </tbody>
-           </table>
-         </section>
-         <section id="tasks">
-           <article>
-             <p>Tasks<br>Liste mit zeilen und spalten</p>
-           </article>
-           <table>
-              <thead>
-                 <tr>
-                    <th>Gruppe </th>
-                    <th>Vorname </th>
-                    <th>Name </th>
-                    <th>Studiengang </th>
-                    <th>Matrikelnummer</th>
-                 </tr>
-              </thead>
-              <tbody>
-                 <tr>
-                    <td>1</td>
-                    <td>Ich</td>
-                    <td>Egal</td>
-                    <td>hier</td>
-                    <td>12345678</td>
-                 </tr>
-                 <tr>
-                    <td>2</td>
-                    <td>nochml Ich</td>
-                    <td>auch Egal</td>
-                    <td>ja, hier</td>
-                    <td>87654321</td>
-                 </tr>
-              </tbody>
-           </table>
-         </section>
-           </menue>
-      </main>
+
+        <main>
+
+          <menue>
+
+            <section id="status">
+
+              <script language="Javascript" type="text/Javascript" src="status.js"></script>
+
+              <article>
+
+                <p>hier tabelle rein</p>
+
+              </article>
+
+              <table>
+
+                <thead>
+
+                  <tr>
+
+                    <th>Auftrag (ID)</th>
+
+                    <th>IP </th>
+
+                    <th>Task </th>
+
+                    <th>Workload </th>
+
+                    <th>Start/Stopp Button </th>
+
+                  </tr>
+
+                </thead>
+
+                <tbody> </tbody>
+
+              </table>
+
+
+
+            </section>
+
+            <section id="tasks">
+
+              <script language="Javascript" type="text/Javascript" src="task.js"></script>
+
+              <table>
+
+                <thead>
+
+                  <tr>
+
+                    <th>Input</th>
+
+                    <th>Output</th>
+
+                    <th>ID</th>
+
+                    <th>Type </th>
+
+                  </tr>
+
+                </thead>
+
+                <tbody> </tbody>
+
+              </table>
+
+          </menue>
+
+        </main>
+
       </div>
-      <script>
-      var xhr = new XMLHttpRequest();
-      xhr.open('GET', 'http://botnet.artificial.engineering:80/api/Status');
-      xhr.responseType = 'json';
-      xhr.setRequestHeader('Token', 'my-token-123');
-      xhr.onload = function() {
-        var data = xhr.response;
-        if (data !== null) {
-          console.log(data); // Parsed JSON object
-        }
-      };
-      xhr.send(null);
-    </script>
-     </body>
- </html>
+
+    </body>
+
+
+
+  </html>
