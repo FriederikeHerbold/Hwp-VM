@@ -21,9 +21,13 @@ left: 0px;
 right: 0px;
 
 bottom: 0px;
+<<<<<<< HEAD
 
 background: #E2A9F3;
 
+=======
+background: #E2A9F3;
+>>>>>>> refs/remotes/origin/master
 }
 
 #b{
@@ -45,15 +49,23 @@ background: #E2A9F3;
   bottom: 0px;
 
   overflow: hidden;
+<<<<<<< HEAD
 
   background: #F8E0E6;
 
+=======
+  background: #F8E0E6;
+>>>>>>> refs/remotes/origin/master
 }
 
 #status{
+<<<<<<< HEAD
 
   background: #F6CED8;
 
+=======
+  background: #F6CED8;
+>>>>>>> refs/remotes/origin/master
 }
 
 section{
@@ -97,6 +109,7 @@ section:target{
   transition: 1000ms left ease-in;
 
 }
+<<<<<<< HEAD
 
 .switch {
 
@@ -211,3 +224,62 @@ input:checked + .slider:before {
   border-radius: 50%;
 
 }
+=======
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+
+.switch input {display:none;}
+
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #F5A9A9;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #FF0000;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #F5A9A9;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+>>>>>>> refs/remotes/origin/master
