@@ -99,7 +99,7 @@ public class decodierung {
 		return false;
 	}
 
-	private int getcmd(int opcode) {
+	private static int getcmd(int opcode) {
 		return (opcode & 15); // 1111
 	}
 
