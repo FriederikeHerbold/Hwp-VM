@@ -5,25 +5,26 @@ import java.util.ArrayList;
 
 public class Assembler {
 	
-	ArrayList<Integer> befehlsListe;
+	private ArrayList<Integer> memory;
 	
-	/**Diese Funktion liefert den Befehl am gewünschten Index der Befehlsliste*/
 	public int getOrder(int index){
-		return befehlsListe.get(index);
+		return memory.get(index);
 	}
 	
-	/**Dieser Konstruktor erstellt eine Befehlsliste aus einem Textdokument mit dem Filename des übergebenen Strings
-	 * Auf diese Befehlsliste kann dann mit int getOrder(int index) zugegriffen werden.
-	 * Falls Ausnahmen Auftreten, wird eine AssemblerException geworfen.*/
+	public int getSize(){
+		return memory.size();
+	}
+	
 	public Assembler(String Filename) throws AssemblerException{
 		try{
 			BufferedReader file= new BufferedReader(new FileReader(Filename));
 			String befehl=null;
 			
 			while((befehl=file.readLine())!=null){
-				befehlsListe.add(Integer.parseInt(befehl));
+				if(befehl.length()!=0)
+					memory.add(Integer.parseInt(befehl));
 			}
-					
+				file.close();
 		}catch(Exception e){
 			throw new AssemblerException(e.getMessage());
 		}
