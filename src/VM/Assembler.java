@@ -10,6 +10,8 @@ public class Assembler {
 	public int getOrder(int index){
 		return memory.get(index);
 	}
+
+	
 	
 	public int getSize(){
 		return memory.size();
