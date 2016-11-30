@@ -1,0 +1,50 @@
+LOAD 20
+JSR 3
+RTS
+
+JIH 10
+LOAD 1000
+MOV 1 0
+LOAD 1
+MOV (1) 0
+LOAD 0
+RTS
+/If (Eingabe==0) Mem[1000]=1
+
+MOV 1 0
+LOAD 1
+SUB 1 0
+MOV 0 1
+JSR 3
+/fib(Eingabe-1)
+
+JIH 22
+LOAD 1001
+MOV 1 0
+LOAD 1
+MOV (1) 0
+LOAD 1
+RTS
+/If(Eingabe==1) Mem[1001]=1
+
+MOV 1 0
+MOV 4 0
+LOAD 999
+ADD 1 0
+LOAD 1
+MOV 2 0
+ADD 2 1
+MOV 3 0
+ADD 3 2
+ADD 4 0
+/R1=1000+Eingabe-2
+/R2=100+Eingabe-1
+/R3=1000+Eingabe
+/R4=Eingabe
+
+MOV 1 (1)
+MOV 2 (2)
+ADD 2 1
+MOV (3) 2
+MOV 0 4
+RTS
