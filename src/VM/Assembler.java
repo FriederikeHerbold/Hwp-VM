@@ -55,7 +55,7 @@ public class Assembler {
 				command+=search(array[0]);
 				
 				if(array[0].equals("NOP") || array[0].equals("RTS")){
-					befehl="NO";
+					befehl=command;
 					
 				}else if(array[0].equals("LOAD") || array[0].equals("JIZ") ||  array[0].equals("JIH") ||  array[0].equals("JMP") ||  array[0].equals("JSR") || array[0].equals("POP") || array[0].equals("PUSH")){
 					
@@ -83,6 +83,8 @@ public class Assembler {
 					}
 				}
 			
+		}else{
+			befehl="NO";
 		}
 		return befehl;
 	}
