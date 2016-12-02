@@ -20,14 +20,14 @@ public class decodierung {
 	public boolean tu(int opcode) {
 
 		switch (getcmd(opcode)) {
-		case Command.NOP:
+		case Command.arrayInt[0]:
 			count++;
 			break;
-		case Command.LOAD:
+		case Command.arrayInt[1]:
 			memory[0] = getvalue(opcode);
 			count++;
 			break;
-		case Command.MOV:
+		case Command.arrayInt[2]:
 			if (getto_mem(opcode) == 1 && getfrom_mem(opcode) == 1) {
 				memory[memory[getrx(opcode)]] = memory[memory[getry(opcode)]];
 			} else if (getto_mem(opcode) == 1) {
@@ -39,55 +39,55 @@ public class decodierung {
 			}
 			count++;
 			break;
-		case Command.ADD:
+		case Command.arrayInt[3]:
 			memory[getrx(opcode)] = (memory[getrx(opcode)] << 20) + (memory[getry(opcode)]);
 			memory[getrx(opcode)] = (memory[getrx(opcode)]) >> 20;
 			count++;
 			break;
-		case Command.SUB:
+		case Command.arrayInt[4]:
 			memory[getrx(opcode)] = (memory[getrx(opcode)] << 20) - (memory[getry(opcode)]);
 			memory[getrx(opcode)] = (memory[getrx(opcode)]) >> 20;
 			count++;
 			break;
-		case Command.MUL:
+		case Command.arrayInt[5]:
 			memory[getrx(opcode)] = (memory[getrx(opcode)] << 20) * (memory[getry(opcode)]);
 			memory[getrx(opcode)] = (memory[getrx(opcode)]) >> 20;
 			count++;
 			break;
-		case Command.DIV:
+		case Command.arrayInt[6]:
 			memory[getrx(opcode)] = (memory[getrx(opcode)] << 20) / (memory[getry(opcode)]);
 			memory[getrx(opcode)] = (memory[getrx(opcode)]) >> 20;
 			count++;
 			break;
-		case Command.PUSH:
+		case Command.arrayInt[7]:
 			stack.push(getrx(opcode));
 			scount++;
 			count++;
 			break;
-		case Command.POP:
+		case Command.arrayInt[8]:
 			scount--;
 			memory[getrx(opcode)] = stack.pop();
 			count++;
 			break;
-		case Command.JMP:
+		case Command.arrayInt[9]:
 			count = getvalue(opcode) + OFFSET;
 			break;
-		case Command.JIZ:
+		case Command.arrayInt[10]:
 			if (memory[0] == 0) {
 				count = getvalue(opcode) + OFFSET;
 			}
 			break;
-		case Command.JIH:
+		case Command.arrayInt[11]:
 			if (memory[0] > 0) {
 				count = getvalue(opcode) + OFFSET;
 			}
 			break;
-		case Command.JSR:
+		case Command.arrayInt[12]:
 			stack.push(count + 1);
 			scount++;
 			count = getvalue(opcode) + OFFSET;
 			break;
-		case Command.RTS:
+		case Command.arrayInt[13]:
 			if (!stack.isEmpty()) {
 				scount--;
 				count = stack.pop();
