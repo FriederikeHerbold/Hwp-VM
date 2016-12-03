@@ -6,14 +6,8 @@ import java.util.ArrayList;
 
 public class Assembler {
 
-	ArrayList<Integer> befehlsListe;
-
-	public int getOrder(int index) {
-
-		return befehlsListe.get(index);
-
-	}
-
+ 	private List<Integer> befehlsListe=new ArrayList()<Interger>;
+	
 	public Assembler(String Filename) throws AssemblerException {
 
 		BufferedReader file=null;
@@ -46,7 +40,7 @@ public class Assembler {
 		}
 		return 0;
 	}
-	public static String methode(String command){
+	private static String methode(String command){
 		String befehl ="";
 		String [] array=command.split(" ");
 		command="";
@@ -89,5 +83,11 @@ public class Assembler {
 		return befehl;
 	}
 
+	public int getOrder(int index) {
+		return befehlsListe.get(index);
+	}
+	public int getSize(){
+		return befehlsListe.size();
+	}
 
 }
