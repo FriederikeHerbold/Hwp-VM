@@ -19,7 +19,7 @@ public class Assembler {
 
 			while ((befehl = file.readLine()) != null) {
 				if(!befehl.equals("NO"){
-					befehlsListe.add(methode(befehl));
+					befehlsListe.add(Integer.parseInt(methode(befehl)));
 				}
 			}
 
