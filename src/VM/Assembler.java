@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class Assembler {
 
- 	private List<Integer> befehlsListe=new ArrayList()<Interger>;
+ 	private ArrayList<Integer> befehlsListe=new ArrayList()<Interger>;
 	
 	public Assembler(String Filename) throws AssemblerException {
 
@@ -18,24 +18,29 @@ public class Assembler {
 			String befehl = null;
 
 			while ((befehl = file.readLine()) != null) {
-				if(!befehl.equals("NO"){
-					befehlsListe.add(Integer.parseInt(methode(befehl)));
+				if(befehl!="NO"){
+					if(befehlsListe.size()<500){
+						befehlsListe.add(Integer.parseInt(methode(befehl)));
+					}else{
+						break;	
+					}
 				}
 			}
+			
 
 		} catch (Exception e) {
 
 			throw new AssemblerException(e.getMessage());
 
 		}finally{
-		   file.close();	
+			file.close();
 		}
 
 	}
 	private static int search(String newCom) {
 		for(int i=0;i<Command.arrayString.length;i++){
 			if(newCom.equals(Command.arrayString[i])){
-				return Command.arrayInt[i];
+				return Command.arrayStringCode[i];
 			}
 		}
 		return 0;
@@ -88,6 +93,10 @@ public class Assembler {
 	}
 	public int getSize(){
 		return befehlsListe.size();
+	}
+	
+	public ArrayList getListe(){
+		return befehlsliste;
 	}
 
 }
