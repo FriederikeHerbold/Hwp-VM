@@ -21,35 +21,34 @@ public class Assembler {
 			int code;
 			while ((befehl = file.readLine()) != null) {
 				code=methode(befehl);
-				if(code)!=-1 && befehlsListe.length<500){
-				 
-					befehlsListe[counter++]=code;
-					
+				
+				if(code!=-1 && befehlsListe.length<500 ){
+					if(befehl!=""){
+					befehlsListe[counter++]=methode(befehl);
+					}
 				}
 			}
-			
+			file.close();
 
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 
-		}finally{
-			file.close();
 		}
 
 	}
-	private static int search(String newCom) {
+	private static String search(String newCom) {
 		for(int i=0;i<Command.arrayString.length;i++){
-			if(newCom.equals(Command.arrayString[i])){
+			if(newCom.equals(Command.arrayStringCode[i])){
 				return Command.arrayStringCode[i];
 			}
 		}
-		return 0;
+		return null;
 	}
 	private static int methode(String command){
 		String befehl ="";
 		String [] array=command.split(" ");
-		command="";
-		if(!array[0].startsWith("/")){
+			command="";
+		if(!command.startsWith("/")){
 			
 				command+=search(array[0]);
 				
@@ -81,22 +80,15 @@ public class Assembler {
 						}
 					}
 				}
-			
+					
 		}else{
 			befehl="-1";
 		}
 		return Integer.parseInt(befehl);
 	}
-
-	public int getOrder(int index) {
-		return befehlsListe.get(index);
-	}
-	public int getSize(){
-		return befehlsListe.size();
-	}
 	
 	public int[] getListe(){
-		return befehlsliste;
+		return befehlsListe;
 	}
 
 }
