@@ -17,7 +17,7 @@ public interface Command {
 	public static final int JSR = 1100;
 	public static final int RTS = 1101;
 	final static String [] arrayString={"NOP","LOAD","MOV","ADD","SUB","MUL","DIV","PUSH","POP","JMP","JIZ","JIH","JSR","RTS"};
-	  final static int   [] arrayStringCode={"0000","0001","0010","0011","0100","0101","0110","0111","1000","1001","1010","1011",
+	  final static String [] arrayStringCode={"0000","0001","0010","0011","0100","0101","0110","0111","1000","1001","1010","1011",
 						 "1100","1101"};
 	
 	
