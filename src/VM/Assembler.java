@@ -1,54 +1,99 @@
 package VM;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Assembler {
-	private List<Integer> befehlsListe=new ArrayList()<Interger>;
 
-	public Assembler(String Filename) throws AssemblerException {
-		BufferedReader file=null;
+	private int[] befehlsListe = new int[500];
+	private int counter;
+
+	public Assembler(String pfad) {
+
+		BufferedReader file = null;
 		try {
-			 file = new BufferedReader(new FileReader(Filename));
+
+			file = new BufferedReader(new FileReader(pfad));
+
 			String befehl = null;
+			counter = 0;
+			int code;
 			while ((befehl = file.readLine()) != null) {
-				if(!befehl.equals("NO"){
-					befehlsListe.add(Integer.parseInt(methode(befehl)));
+				code = methode(befehl);
+				if (code != -1 && counter < befehlsListe.length) {
+
+					befehlsListe[counter++] = code;
+
 				}
 			}
+			file.close();
 		} catch (Exception e) {
-			throw new AssemblerException(e.getMessage());
-		}finally{
-		   file.close();	
+			System.out.println(e.getMessage());
+
 		}
 	}
 
-	private static int search(String newCom) {
-		for (int i = 0; i < Command.arrayString.length; i++) {
+	private static String search(String newCom) {
+		int i = 0;
+		String ret = "Fehler";
+		while (ret == "Fehler" && i < Command.arrayString.length) {
 			if (newCom.equals(Command.arrayString[i])) {
-				return Command.arrayInt[i];
+				ret = Command.arrayStringCode[i];
 			}
+			i++;
 		}
-		return 0;
+		return ret;
 	}
 
-	private static String methode(String command) {
+	private static int methode(String command) {
 		String befehl = "";
 		String[] array = command.split(" ");
 		command = "";
+		String com = array[0];
+
 		if (!array[0].startsWith("/")) {
 			command += search(array[0]);
-			if (array[0].equals("NOP") || array[0].equals("RTS")) {
-				befehl = command;
-			} else if (array[0].equals("LOAD") || array[0].equals("JIZ") || array[0].equals("JIH")
-					|| array[0].equals("JMP") || array[0].equals("JSR") || array[0].equals("POP")
-					|| array[0].equals("PUSH")) {
+
+			switch (com) {
+			case "NOP":
+				command += search(array[0]);
+				break;
+			case "RTS":
+				command += search(array[0]);
+				break;
+			case "LOAD":
 				befehl = array[1] + command;
-			} else if (array[0].equals("ADD") || array[0].equals("SUB") || array[0].equals("MUL")
-					|| array[0].equals("DIV")) {
+				break;
+			case "JIZ":
+				befehl = array[1] + command;
+				break;
+			case "JIH":
+				befehl = array[1] + command;
+				break;
+			case "JMP":
+				befehl = array[1] + command;
+				break;
+			case "JSR":
+				befehl = array[1] + command;
+				break;
+			case "POP":
+				befehl = array[1] + command;
+				break;
+			case "PUSH":
+				befehl = array[1] + command;
+				break;
+			case "ADD":
 				befehl = "00" + array[2] + array[1] + command;
-			} else if (array[0].equals("MOV")) {
+				break;
+			case "SUB":
+				befehl = "00" + array[2] + array[1] + command;
+				break;
+			case "MUL":
+				befehl = "00" + array[2] + array[1] + command;
+				break;
+			case "DIV":
+				befehl = "00" + array[2] + array[1] + command;
+				break;
+			case "MOV":
 				if (array[1].startsWith("(") && array[1].endsWith(")")) {
 					if (array[2].startsWith("(") && array[2].endsWith(")")) {
 						befehl = "11" + array[2].substring(1, array[2].length() - 1)
@@ -56,6 +101,7 @@ public class Assembler {
 					} else {
 						befehl = "10" + array[2] + array[1].substring(1, array[1].length() - 1) + command;
 					}
+
 				} else {
 					if (array[2].startsWith("(") && array[2].endsWith(")")) {
 						befehl = "01" + array[2].substring(1, array[2].length() - 1) + array[1] + command;
@@ -63,18 +109,16 @@ public class Assembler {
 						befehl = "00" + array[2] + array[1] + command;
 					}
 				}
+				break;
+			default:
+				befehl = "-1";
 			}
-		} else {
-			befehl = "NO";
 		}
-		return befehl;
+		return Integer.parseInt(befehl);
 	}
 
-	public int getOrder(int index) {
-		return befehlsListe.get(index);
+	public int[] getListe() {
+		return befehlsListe;
 	}
 
-	public int getSize() {
-		return befehlsListe.size();
-	}
 }

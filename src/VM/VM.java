@@ -4,21 +4,24 @@ import java.util.Stack;
 
 public class VM {
 
-	int[] memory;// = new int[4095];
+	int[] memory = new int[4095];
 	Stack<Integer> stack = new Stack<Integer>();
 	int count;
 	int offset;
+	private int prog_Max;
 	boolean beendet = false;
 
 	VM(int[] code, int off) {
-		memory = code;
 		offset = off;
 		count = 0 + off;
-
+		prog_Max = 500 + off;
+		for (int i = 0; i < prog_Max && i < code.length; i++) {
+			memory[i + offset] = code[i];
+		}
 	}
 
 	public void start() {
-		while (!beendet || count < memory.length) {
+		while (!beendet && count < prog_Max) {
 			beendet = tu(memory[count]);
 		}
 	}
@@ -123,5 +126,11 @@ public class VM {
 
 	private int getfrom_mem(int opcode) {
 		return (opcode << 13) & 1;
+	}
+
+	public void print() {
+		for (int i = 0; i < memory.length; i++) {
+			System.out.println("" + i + " | " + memory[i]);
+		}
 	}
 }
