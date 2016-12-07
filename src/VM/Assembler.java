@@ -6,9 +6,10 @@ import java.util.ArrayList;
 
 public class Assembler {
 
- 	private ArrayList<Integer> befehlsListe=new ArrayList()<Interger>;
+ 	private int[] befehlsListe=new int[500];
+	private int counter;
 	
-	public Assembler(String pfad) throws AssemblerException {
+	public Assembler(String pfad) {
 
 		BufferedReader file=null;
 		try {
@@ -16,21 +17,20 @@ public class Assembler {
 			 file = new BufferedReader(new FileReader(pfad));
 
 			String befehl = null;
-
+			counter=0;
+			int code;
 			while ((befehl = file.readLine()) != null) {
-				if(befehl!="NO"){
-					if(befehlsListe.size()<500){
-						befehlsListe.add(Integer.parseInt(methode(befehl)));
-					}else{
-						break;	
-					}
+				code=methode(befehl);
+				if(code)!=-1 && befehlsListe.length<500){
+				 
+					befehlsListe[counter++]=code;
+					
 				}
 			}
 			
 
 		} catch (Exception e) {
-
-			throw new AssemblerException(e.getMessage());
+			System.out.println(e.getMessage());
 
 		}finally{
 			file.close();
@@ -45,7 +45,7 @@ public class Assembler {
 		}
 		return 0;
 	}
-	private static String methode(String command){
+	private static int methode(String command){
 		String befehl ="";
 		String [] array=command.split(" ");
 		command="";
@@ -83,9 +83,9 @@ public class Assembler {
 				}
 			
 		}else{
-			befehl="NO";
+			befehl="-1";
 		}
-		return befehl;
+		return Integer.parseInt(befehl);
 	}
 
 	public int getOrder(int index) {
@@ -95,7 +95,7 @@ public class Assembler {
 		return befehlsListe.size();
 	}
 	
-	public ArrayList getListe(){
+	public int[] getListe(){
 		return befehlsliste;
 	}
 
