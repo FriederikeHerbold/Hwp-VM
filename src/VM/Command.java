@@ -1,7 +1,7 @@
 package VM;
 
-
 public interface Command {
+
 	public static final int NOP = 0000;
 	public static final int LOAD = 0001;
 	public static final int MOV = 0010;
@@ -16,9 +16,10 @@ public interface Command {
 	public static final int JIH = 1011;
 	public static final int JSR = 1100;
 	public static final int RTS = 1101;
-	final static String [] arrayString={"NOP","LOAD","MOV","ADD","SUB","MUL","DIV","PUSH","POP","JMP","JIZ","JIH","JSR","RTS"};
-	  final static String [] arrayStringCode={"0000","0001","0010","0011","0100","0101","0110","0111","1000","1001","1010","1011",
-						 "1100","1101"};
-	
-	
+
+	final static String[] arrayString = { "NOP", "LOAD", "MOV", "ADD", "SUB", "MUL", "DIV", "PUSH", "POP", "JMP", "JIZ",
+			"JIH", "JSR", "RTS" };
+	final static String[] arrayStringCode = { "0000", "0001", "0010", "0011", "0100", "0101", "0110", "0111", "1000",
+			"1001", "1010", "1011", "1100", "1101" };
+
 }
