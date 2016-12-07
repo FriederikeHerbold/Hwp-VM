@@ -8,12 +8,12 @@ public class Assembler {
 
  	private ArrayList<Integer> befehlsListe=new ArrayList()<Interger>;
 	
-	public Assembler(String Filename) throws AssemblerException {
+	public Assembler(String pfad) throws AssemblerException {
 
 		BufferedReader file=null;
 		try {
 
-			 file = new BufferedReader(new FileReader(Filename));
+			 file = new BufferedReader(new FileReader(pfad));
 
 			String befehl = null;
 
