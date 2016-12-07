@@ -2,119 +2,126 @@ package VM;
 
 import java.util.Stack;
 
-public class VM implements Runnable {
+public class VM {
 
-	private Assembler myAssembler;
-	private Stack<Integer> stack=new Stack<Integer>();
-	private int prgCNT,indexRx,indexRy,cmd,opCode,to_Mem,from_Mem;
-	private int [] reg=new int[4096];
-	
-	
-	public VM (String fileName) throws AssemblerException {
-		
-		myAssembler=new Assembler(fileName);
+	int[] memory;// = new int[4095];
+	Stack<Integer> stack = new Stack<Integer>();
+	int count;
+	int offset;
+	boolean beendet = false;
+
+	VM(int[] code, int off) {
+		memory = code;
+		offset = off;
+		count = 0 + off;
 
 	}
 
-
-	@Override
-	public void run() {
-		do{
-			opCode=myAssembler.getOrder(prgCNT);
-			cmd= (opCode) & 0b1111;
-			indexRx=(opCode>>4)& 0b1111;
-			indexRy=(opCode >>8)& 0b1111;
-			
-			
-			
-			makeMenu(cmd);
-				
-		}while(prgCNT<myAssembler.getSize());
-		
-	}
-
-
-	private void makeMenu(int command) {
-	
-		switch(command){
-			
-		case(Command.NOP):
-			break;
-		case(Command.LOAD):
-			reg[0]=getValue(opCode);
-			prgCNT++;
-			break;
-		case(Command.MOV):
-			if(getToMem(opCode)==1){
-				reg[indexRx]=reg[indexRy];
-			}else if(getFromMem(opCode)==1){
-				reg[indexRy]=reg[indexRx];
-			}
-			prgCNT++;
-			break;
-		case(Command.ADD):
-			reg[indexRy] = reg[indexRy] + reg[indexRy];
-			prgCNT++;
-			break;
-		case(Command.SUB):
-			reg[indexRx]-=reg[indexRy];
-			prgCNT++;
-		case(Command.MUL):
-			reg[indexRx]*=reg[indexRy];
-			prgCNT++;
-			break;
-		case (Command.DIV):
-			reg[indexRx]/=reg[indexRy];
-			prgCNT++;
-		case(Command.PUSH):
-			stack.push(indexRx);
-			prgCNT++;
-			break;
-		case(Command.POP):
-			stack.pop();
-			break;
-		case(Command.JMP):
-			prgCNT=getValue(opCode);
-			break;
-		case(Command.JIZ):
-			if(reg[0]==0){
-				prgCNT=getValue(opCode);
-			}
-			break;
-		case(Command.JIH):
-			if(reg[0]>0){
-				prgCNT=getValue(opCode);
-			}
-			break;
-		case(Command.JSR):
-			
-			stack.push(prgCNT+1);
-			
-			prgCNT=getValue(opCode);
-			
-			break;
-		case(Command.RTS):
-			if(stack.isEmpty()){
-				System.exit(0);
-			}
-			prgCNT=stack.pop();
-			
-			break;
-		default:
-			break;
-			
+	public void start() {
+		while (!beendet || count < memory.length) {
+			beendet = tu(memory[count]);
 		}
-		
 	}
-	
-	private int getValue(int opCode){
-		return (opCode>>4) & 0b1111;
+
+	private boolean tu(int opcode) {
+
+		switch (getcmd(opcode)) {
+		case Command.NOP:
+			count++;
+			break;
+		case Command.LOAD:
+			memory[0] = getvalue(opcode);
+			count++;
+			break;
+		case Command.MOV:
+			if (getto_mem(opcode) == 1 && getfrom_mem(opcode) == 1) {
+				memory[memory[getrx(opcode)]] = memory[memory[getry(opcode)]];
+			} else if (getto_mem(opcode) == 1) {
+				memory[memory[getrx(opcode)]] = memory[getry(opcode)];
+			} else if (getfrom_mem(opcode) == 1) {
+				memory[getrx(opcode)] = memory[memory[getry(opcode)]];
+			} else {
+				memory[getrx(opcode)] = memory[getry(opcode)];
+			}
+			count++;
+			break;
+		case Command.ADD:
+			memory[getrx(opcode)] = (memory[getrx(opcode)] << 20) + (memory[getry(opcode)]);
+			memory[getrx(opcode)] = (memory[getrx(opcode)]) >> 20;
+			count++;
+			break;
+		case Command.SUB:
+			memory[getrx(opcode)] = (memory[getrx(opcode)] << 20) - (memory[getry(opcode)]);
+			memory[getrx(opcode)] = (memory[getrx(opcode)]) >> 20;
+			count++;
+			break;
+		case Command.MUL:
+			memory[getrx(opcode)] = (memory[getrx(opcode)] << 20) * (memory[getry(opcode)]);
+			memory[getrx(opcode)] = (memory[getrx(opcode)]) >> 20;
+			count++;
+			break;
+		case Command.DIV:
+			memory[getrx(opcode)] = (memory[getrx(opcode)] << 20) / (memory[getry(opcode)]);
+			memory[getrx(opcode)] = (memory[getrx(opcode)]) >> 20;
+			count++;
+			break;
+		case Command.PUSH:
+			stack.push(getrx(opcode));
+			count++;
+			break;
+		case Command.POP:
+			memory[getrx(opcode)] = stack.pop();
+			count++;
+			break;
+		case Command.JMP:
+			count = getvalue(opcode) + offset;
+			break;
+		case Command.JIZ:
+			if (memory[0] == 0) {
+				count = getvalue(opcode) + offset;
+			}
+			break;
+		case Command.JIH:
+			if (memory[0] > 0) {
+				count = getvalue(opcode) + offset;
+			}
+			break;
+		case Command.JSR:
+			stack.push(count + 1);
+			count = getvalue(opcode) + offset;
+			break;
+		case Command.RTS:
+			if (!stack.isEmpty()) {
+				count = stack.pop();
+			} else {
+				return true;// beebden des programms while(!beendet)
+			}
+			break;
+		}
+		return false;
 	}
-	
-	private int getToMem(int opCode){
-		return (opCode>>13) & 1;
+
+	private int getcmd(int opcode) {
+		return (opcode & 15); // 1111
 	}
-	private int getFromMem(int opCode){
-		return (opCode>>12) & 1;
+
+	private int getrx(int opcode) {
+		return (opcode << 4) & 15; // 1111
+	}
+
+	private int getry(int opcode) {
+		return (opcode << 8) & 15; // 1111
+	}
+
+	private int getvalue(int opcode) {
+		return (opcode << 4) & 4095; // 111111111111
+	}
+
+	private int getto_mem(int opcode) {
+		return (opcode << 12) & 1;
+	}
+
+	private int getfrom_mem(int opcode) {
+		return (opcode << 13) & 1;
 	}
 }
