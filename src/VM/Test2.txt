@@ -1,21 +1,21 @@
 LOAD 1001
-MOV 1,0
+MOV 1 0
 LOAD 1
-MOV (1),0
+MOV (1) 0
 
 LOAD 1002
-MOV 2,0
-MOV 0,(1)
-ADD 0,0
-MOV (2),0
+MOV 2 0
+MOV 0 (1)
+ADD 0 0
+MOV (2) 0
 
 LOAD 1003
-MOV 3,0
-MOV (3),(2)
-MOV 4,(3)
+MOV 3 0
+MOV (3) (2)
+MOV 4 (3)
 LOAD 1
-ADD 0,4
-MOV (3),0
+ADD 0 4
+MOV (3) 0
 
 RTS
 
