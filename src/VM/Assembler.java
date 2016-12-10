@@ -61,53 +61,56 @@ public class Assembler {
 				command += search(array[0]);
 				break;
 			case "LOAD":
-				befehl = array[1] + command;
+				befehl = Integer.toBinaryString(Integer.parseInt(array[1])) + command;
 				break;
 			case "JIZ":
-				befehl = array[1] + command;
+				befehl =Integer.toBinaryString(Integer.parseInt(array[1])) + command;
 				break;
 			case "JIH":
-				befehl = array[1] + command;
+				befehl =Integer.toBinaryString(Integer.parseInt(array[1])) + command;
 				break;
 			case "JMP":
-				befehl = array[1] + command;
+				befehl = Integer.toBinaryString(Integer.parseInt(array[1])) + command;
 				break;
 			case "JSR":
-				befehl = array[1] + command;
+				befehl = Integer.toBinaryString(Integer.parseInt(array[1])) + command;
 				break;
 			case "POP":
-				befehl = array[1] + command;
+				befehl =Integer.toBinaryString(Integer.parseInt(array[1])) + command;
 				break;
 			case "PUSH":
-				befehl = array[1] + command;
+				befehl = Integer.toBinaryString(Integer.parseInt(array[1])) + command;
 				break;
 			case "ADD":
-				befehl = "00" + array[2] + array[1] + command;
+				befehl = "00" + Integer.toBinaryString(Integer.parseInt(array[2])) + Integer.toBinaryString(Integer.parseInt(array[1])) + command;
 				break;
 			case "SUB":
-				befehl = "00" + array[2] + array[1] + command;
+				befehl = "00" + Integer.toBinaryString(Integer.parseInt(array[2])) + Integer.toBinaryString(Integer.parseInt(array[1])) + command;
 				break;
 			case "MUL":
-				befehl = "00" + array[2] + array[1] + command;
+				befehl = "00" + Integer.toBinaryString(Integer.parseInt(array[2])) +Integer.toBinaryString(Integer.parseInt(array[1])) + command;
 				break;
 			case "DIV":
-				befehl = "00" + array[2] + array[1] + command;
+				befehl = "00" + Integer.toBinaryString(Integer.parseInt(array[2])) + Integer.toBinaryString(Integer.parseInt(array[1])) + command;
 				break;
 			case "MOV":
-				if (array[1].startsWith("(") && array[1].endsWith(")")) {
-					if (array[2].startsWith("(") && array[2].endsWith(")")) {
-						befehl = "11" + array[2].substring(1, array[2].length() - 1)
-								+ array[1].substring(1, array[1].length() - 1) + command;
-					} else {
-						befehl = "10" + array[2] + array[1].substring(1, array[1].length() - 1) + command;
-					}
-
-				} else {
-					if (array[2].startsWith("(") && array[2].endsWith(")")) {
-						befehl = "01" + array[2].substring(1, array[2].length() - 1) + array[1] + command;
-					} else {
-						befehl = "00" + array[2] + array[1] + command;
-					}
+				if(array[1].startsWith("(") && array[1].endsWith(")")){
+						if(array[2].startsWith("(") && array[2].endsWith(")")){
+							
+							befehl="11"+Integer.toBinaryString(Integer.parseInt(array[2].substring(1,array[2].length()-1)))+
+							Integer.toBinaryString(Integer.parseInt(array[1].substring(1,array[1].length()-1)))+command;
+						}else{
+							befehl="10"+Integer.toBinaryString(Integer.parseInt(array[2]))+
+									Integer.toBinaryString(Integer.parseInt(array[1].substring(1,array[1].length()-1)))+command;
+						}
+						
+					}else{
+						if(array[2].startsWith("(") && array[2].endsWith(")")){
+							befehl="01"+Integer.toBinaryString(Integer.parseInt(array[2].substring(1,array[2].length()-1)))
+							+Integer.toBinaryString(Integer.parseInt(array[1]))+command;
+						}else{
+							befehl="00"+Integer.toBinaryString(Integer.parseInt(array[2]))+Integer.toBinaryString(Integer.parseInt(array[1]))+command;
+						}
 				}
 				break;
 			default:
