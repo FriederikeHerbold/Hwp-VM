@@ -41,28 +41,57 @@ public class Assembler {
 		}
 		return returnString;
 	}
-	public static String methode(String command){
-		String befehl ="";
-		
-		if(!command.startsWith("/")){
-			String [] array=command.split(" ");
-			command="";
-				command+=search(array[0]);
-				
-				if(array[0].equals("NOP") || array[0].equals("RTS")){
-					befehl=command;
-					
-				}else if(array[0].equals("LOAD") || array[0].equals("JIZ") ||  array[0].equals("JIH") ||  array[0].equals("JMP") ||  array[0].equals("JSR") || array[0].equals("POP") || array[0].equals("PUSH")){
-					
-					befehl=Integer.toBinaryString(Integer.parseInt(array[1]))+command;
-					
-					
-				}else if(array[0].equals("ADD") || array[0].equals("SUB") || array[0].equals("MUL") || array[0].equals("DIV")){
-					
-					befehl="00"+Integer.toBinaryString(Integer.parseInt(array[2]))+Integer.toBinaryString(Integer.parseInt(array[1]))+command;	
-					
-				}else if(array[0].equals("MOV")){
-					if(array[1].startsWith("(") && array[1].endsWith(")")){
+	private static int methode(String command) {
+		String befehl = "";
+		String[] array = command.split(" ");
+		command = "";
+		String com = array[0];
+
+		if (!array[0].startsWith("/")) {
+			command += search(array[0]);
+
+			switch (com) {
+			case "NOP":
+				command += search(array[0]);
+				break;
+			case "RTS":
+				command += search(array[0]);
+				break;
+			case "LOAD":
+				befehl = Integer.toBinaryString(Integer.parseInt(array[1])) + command;
+				break;
+			case "JIZ":
+				befehl =Integer.toBinaryString(Integer.parseInt(array[1])) + command;
+				break;
+			case "JIH":
+				befehl =Integer.toBinaryString(Integer.parseInt(array[1])) + command;
+				break;
+			case "JMP":
+				befehl = Integer.toBinaryString(Integer.parseInt(array[1])) + command;
+				break;
+			case "JSR":
+				befehl = Integer.toBinaryString(Integer.parseInt(array[1])) + command;
+				break;
+			case "POP":
+				befehl =Integer.toBinaryString(Integer.parseInt(array[1])) + command;
+				break;
+			case "PUSH":
+				befehl = Integer.toBinaryString(Integer.parseInt(array[1])) + command;
+				break;
+			case "ADD":
+				befehl = "00" + Integer.toBinaryString(Integer.parseInt(array[2])) + Integer.toBinaryString(Integer.parseInt(array[1])) + command;
+				break;
+			case "SUB":
+				befehl = "00" + Integer.toBinaryString(Integer.parseInt(array[2])) + Integer.toBinaryString(Integer.parseInt(array[1])) + command;
+				break;
+			case "MUL":
+				befehl = "00" + Integer.toBinaryString(Integer.parseInt(array[2])) +Integer.toBinaryString(Integer.parseInt(array[1])) + command;
+				break;
+			case "DIV":
+				befehl = "00" + Integer.toBinaryString(Integer.parseInt(array[2])) + Integer.toBinaryString(Integer.parseInt(array[1])) + command;
+				break;
+			case "MOV":
+				if(array[1].startsWith("(") && array[1].endsWith(")")){
 						if(array[2].startsWith("(") && array[2].endsWith(")")){
 							
 							befehl="11"+Integer.toBinaryString(Integer.parseInt(array[2].substring(1,array[2].length()-1)))+
@@ -79,15 +108,15 @@ public class Assembler {
 						}else{
 							befehl="00"+Integer.toBinaryString(Integer.parseInt(array[2]))+Integer.toBinaryString(Integer.parseInt(array[1]))+command;
 						}
-					}
-				}else{
-					befehl="-1";
 				}
-			
-		}else{
-			befehl="-1";
+				break;
+			default:
+				befehl = "-1";
+			}
 		}
 		return Integer.parseInt(befehl);
 	}
-
+	public int[] getListe() {
+		return befehlsListe;
+	}
 }
