@@ -87,7 +87,7 @@ public class Assembler {
 		}else{
 			befehl="-1";
 		}
-		return befehl;
+		return Integer.parseInt(befehl);
 	}
 
 }
