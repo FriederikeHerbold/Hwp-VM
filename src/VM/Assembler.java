@@ -26,10 +26,12 @@ public class Assembler {
 
 				}
 			}
-			file.close();
+	
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 
+		}finally{
+			fin.close();
 		}
 	}
 	private static int search(String newCom) {
